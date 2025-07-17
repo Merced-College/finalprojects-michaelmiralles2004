@@ -11,6 +11,31 @@ public class Book {
         this.isAvailable =  true;
     }
 
-    //TODO: ADD GETTERS, SETTERS, AND METHODS
+    // Getters
+    public String getTitle () {
+        return title;
+    }
 
+    public String getAuthor () {
+        return author;
+    }
+
+    public String getIsbn () {
+        return isbn;
+    }
+
+    public boolean getAvailability () {
+        return isAvailable;
+    }
+
+    // Setters
+    public void setTitle (String title) {
+        this.title = title;
+    }
+
+    public void setAuthor (String author) {
+        this.author = author;
+    }
+
+    // TODO: ADD checkout() AND returnBook() methods
 }

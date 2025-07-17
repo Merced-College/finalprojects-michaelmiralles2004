@@ -7,5 +7,26 @@ public class Member {
         this.memberID = memberID;
     }
 
-    //TODO: ADD METHODS FOR CHECKING OUT/RETURNING BOOKS
-}
+    // Getters
+    public String getMemberName () {
+        return memberName;
+    }
+
+    public String getMemberID () {
+        return memberID;
+    }
+
+    // Setters
+    public void setMemberName (String memberName) {
+        this.memberName = memberName;
+    }
+
+    public void setMemberID (String memberID) {
+        this.memberID = memberID;
+    }
+
+    @Override
+    public String toString () {
+        return memberName + " (ID: )" + memberID + " )";
+    }
+ }
