@@ -10,38 +10,38 @@ public class Member {
     private String memberID;
 
     // Default Constructor
-    public Member () {
+    public Member() {
         this.memberName = "";
         this.memberID = "";
     }
 
     // Cunstroctor that creats a member with a name and ID
-    public Member (String memberName, String memberID) {
+    public Member(String memberName, String memberID) {
         this.memberName = memberName;
         this.memberID = memberID;
     }
 
     // Getters
-    public String getMemberName () {
+    public String getMemberName() {
         return memberName;
     }
 
-    public String getMemberID () {
+    public String getMemberID() {
         return memberID;
     }
 
     // Setters
-    public void setMemberName (String memberName) {
+    public void setMemberName(String memberName) {
         this.memberName = memberName;
     }
 
-    public void setMemberID (String memberID) {
+    public void setMemberID(String memberID) {
         this.memberID = memberID;
     }
 
     // Returns string showing the member details
     @Override
-    public String toString () {
+    public String toString() {
         return memberName + " (ID: )" + memberID + " )";
     }
  }

@@ -18,7 +18,7 @@ public class LibrarySystem {
     private Scanner scnr;
 
     // Defaule constructor
-    public LibrarySystem () {
+    public LibrarySystem() {
         books = new ArrayList<>();
         members = new ArrayList<>();
         scnr = new Scanner(System.in);
@@ -36,7 +36,7 @@ public class LibrarySystem {
     
     // Starts the menu loop  for the LMS
     // Allows users to view, checkout, and return books, and exit the loop
-    public void start () {
+    public void start() {
         System.out.println("============================================");
         System.out.println("| Welcome to my Library Management System! |");
         System.out.println("============================================");
@@ -73,7 +73,7 @@ public class LibrarySystem {
     }
 
     // Display Books
-    private void displayBooks () {
+    private void displayBooks() {
         System.out.println("Book List: ");
 
         for (int i = 0; i < books.size(); i++) {
@@ -82,7 +82,7 @@ public class LibrarySystem {
     }
 
     // Prompts the user to choose a book and checks it out if available
-    private void checkoutBook () {
+    private void checkoutBook() {
         System.out.println("Which book would you like to checkout?");
         displayBooks();
 
@@ -132,7 +132,7 @@ public class LibrarySystem {
     }
 
     // Load books from the text file
-    private void loadBooks (String fileName) {
+    private void loadBooks(String fileName) {
         try {
             Scanner scnr = new Scanner(new File("books.txt"));
 

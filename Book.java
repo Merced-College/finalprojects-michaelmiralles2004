@@ -13,14 +13,14 @@ public class Book {
     private boolean isAvailable;
 
     // Default constructor
-    public Book () {
+    public Book() {
         this.title = "";
         this.author = "";
         this.isbn = "";
         this.isAvailable = true;
     }
 
-    public Book (String title, String author, String isbn) {
+    public Book(String title, String author, String isbn) {
         this.title = title;
         this.author = author;
         this.isbn = isbn;
@@ -28,28 +28,28 @@ public class Book {
     }
 
     // Getters
-    public String getTitle () {
+    public String getTitle() {
         return title;
     }
 
-    public String getAuthor () {
+    public String getAuthor() {
         return author;
     }
 
-    public String getIsbn () {
+    public String getIsbn() {
         return isbn;
     }
 
-    public boolean getAvailability () {
+    public boolean getAvailability() {
         return isAvailable;
     }
 
     // Setters
-    public void setTitle (String title) {
+    public void setTitle(String title) {
         this.title = title;
     }
 
-    public void setAuthor (String author) {
+    public void setAuthor(String author) {
         this.author = author;
     }
 
