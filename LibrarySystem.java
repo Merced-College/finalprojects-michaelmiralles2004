@@ -1,5 +1,15 @@
+/**
+ * Name: Michael Miralles
+ * Date: July 18, 2025
+ * Description: This file contains the main logic for the Library Management System.
+ *              It manages book and member data, user interaction, and book checkout/return
+ *              Books are loaded, sorted, and displayed through a menu-driven interface
+ */
+
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 public class LibrarySystem {
 
@@ -7,15 +17,14 @@ public class LibrarySystem {
     private ArrayList<Member> members;
     private Scanner scnr;
 
+    // Defaule constructor
     public LibrarySystem () {
         books = new ArrayList<>();
         members = new ArrayList<>();
         scnr = new Scanner(System.in);
 
-        // Add sample books to test proj
-        books.add(new Book("Crooked Kingdom", "Leigh Bardugo", "1250076978"));
-        books.add(new Book("1984", "George Orwell", "9780451524935"));
-        books.add(new Book("The Stone Face", "William Gardner Smith", "1681375168"));
+        // load books from file
+        loadBooks("books.txt");
 
         // Add sample members
         members.add(new Member("John", "M001"));
@@ -25,6 +34,8 @@ public class LibrarySystem {
         books = SortHelper.mergeSort(books);
     }
     
+    // Starts the menu loop  for the LMS
+    // Allows users to view, checkout, and return books, and exit the loop
     public void start () {
         System.out.println("============================================");
         System.out.println("| Welcome to my Library Management System! |");
@@ -117,6 +128,30 @@ public class LibrarySystem {
         }
         else {
             System.out.println("That book is already available.");
+        }
+    }
+
+    // Load books from the text file
+    private void loadBooks (String fileName) {
+        try {
+            Scanner scnr = new Scanner(new File("books.txt"));
+
+            while (scnr.hasNextLine()) {
+                String line = scnr.nextLine();
+                String[] parts = line.split(",");
+
+                if (parts.length == 3) {
+                    String title = parts[0].trim();
+                    String author = parts[1].trim();
+                    String isbn = parts[2].trim();
+
+                    books.add(new Book(title, author, isbn));
+                }
+            }
+            scnr.close();
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("Error loading books from file: " + e.getMessage());
         }
     }
 }
