@@ -37,5 +37,26 @@ public class Book {
         this.author = author;
     }
 
-    // TODO: ADD checkout() AND returnBook() methods
+    // Mark as checked out
+    public void checkout() {
+        if (isAvailable) {
+            isAvailable = false;
+            System.out.println(title + " has been checked out.");
+        }
+        else {
+            System.out.println("I'm sorry but " + title + " has already been checked out.");
+        }
+    }
+
+    // Mark as returned
+    public void returnBook() {
+        isAvailable = true;
+        System.out.println(title + " has been returned.");
+    }
+
+    // Returns string showing the book's details
+    @Override
+    public String toString() {
+        return "\"" + title + "\" by " + author + " (ISBN: " + isbn + ")" + (isAvailable ? " - Available" : " - Checked Out");
+    }
 }
