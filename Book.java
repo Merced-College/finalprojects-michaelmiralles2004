@@ -1,8 +1,24 @@
+/**
+ * Name: Michael Miralles
+ * Date: July 18, 2025
+ * Description: This class represents a Book object in the Library Management System.
+ *              Each book contains a title, author, ISBN, and availability status.
+ *              Includes methods for checking out, returning, and displaying book info.
+ */
+
 public class Book {
     private String title;
     private String author;
     private String isbn;
     private boolean isAvailable;
+
+    // Default constructor
+    public Book () {
+        this.title = "";
+        this.author = "";
+        this.isbn = "";
+        this.isAvailable = true;
+    }
 
     public Book (String title, String author, String isbn) {
         this.title = title;
