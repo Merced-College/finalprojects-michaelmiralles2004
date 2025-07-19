@@ -13,6 +13,8 @@ import java.io.FileNotFoundException;
 
 public class LibrarySystem {
 
+    private BookStack returnedBooks = new BookStack();
+
     private ArrayList<Book> books;
     private ArrayList<Member> members;
     private Scanner scnr;
@@ -37,9 +39,9 @@ public class LibrarySystem {
     // Starts the menu loop  for the LMS
     // Allows users to view, checkout, and return books, and exit the loop
     public void start() {
-        System.out.println("============================================");
-        System.out.println("| Welcome to my Library Management System! |");
-        System.out.println("============================================");
+        System.out.println("====================================================");
+        System.out.println("| Welcome to ByteBoks! A Library Management System |");
+        System.out.println("====================================================");
 
         // Menu Loop
         while (true) {
@@ -47,8 +49,10 @@ public class LibrarySystem {
             System.out.println("1. View all books");
             System.out.println("2. Checkout a book");
             System.out.println("3. Return a book");
-            System.out.println("4. Exit");
-            System.out.print("Please enter your choice: ");
+            System.out.println("4. View recently returned books");
+            System.out.println("5. View the waitlist");
+            System.out.println("6. Exit");
+            System.out.print("Please enter your choice(1-6): ");
 
             int choice = scnr.nextInt();
             scnr.nextLine();
@@ -63,6 +67,12 @@ public class LibrarySystem {
                 returnBook();
             }
             else if (choice == 4) {
+                returnedBooks.printRecent(5);
+            }
+            else if (choice == 5) {
+                viewWaitlist();
+            }
+            else if (choice == 6) {
                 System.out.println("Hope you enjoyed your stay. Goodbye!");
                 return;
             }
@@ -103,6 +113,19 @@ public class LibrarySystem {
         }
         else {
             System.out.println("Im sorry that book is already checked out.");
+            System.out.print("Would you like to be added to the wailist? (y/n): ");
+
+            String usrResponse = scnr.nextLine();
+
+            if (usrResponse.equalsIgnoreCase("y")) {
+                System.out.print("Enter your name: ");
+
+                String name = scnr.nextLine();
+
+                currBook.getWaitlist().enqueue(name);
+
+                System.out.println(name + " has been added to the waitlist.");
+            }
         }
     }
 
@@ -125,6 +148,13 @@ public class LibrarySystem {
 
         if(!currBook.getAvailability()) {
             currBook.returnBook();
+            returnedBooks.push(currBook);
+
+            if (!currBook.getWaitlist().isEmpty()) {
+                String nextUsr = currBook.getWaitlist().dequeue();
+                currBook.checkout();
+                System.out.println("Book auto-assigned to next user in waitlist: " + nextUsr);
+            }
         }
         else {
             System.out.println("That book is already available.");
@@ -152,6 +182,31 @@ public class LibrarySystem {
         }
         catch (FileNotFoundException e) {
             System.out.println("Error loading books from file: " + e.getMessage());
+        }
+    }
+
+    private void viewWaitlist() {
+        System.out.println("Which book's waitlist would you like to vieww?");
+        displayBooks();
+
+        System.out.print("Enter book number: ");
+
+        int index = scnr.nextInt();
+        scnr.nextLine();
+
+        if (index < 1 || index > books.size()) {
+            System.out.println("Invalid book number.");
+            return;
+        }
+
+        Book selectedBook = books.get(index - 1);
+        BookQueue queue = selectedBook.getWaitlist();
+
+        if (queue.isEmpty()) {
+            System.out.println("No users are currently in the waitlist for this book.");
+        }
+        else {
+            queue.printQueue();
         }
     }
 }

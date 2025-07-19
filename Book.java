@@ -11,6 +11,7 @@ public class Book {
     private String author;
     private String isbn;
     private boolean isAvailable;
+    private BookQueue waitlist;
 
     // Default constructor
     public Book() {
@@ -25,6 +26,7 @@ public class Book {
         this.author = author;
         this.isbn = isbn;
         this.isAvailable =  true;
+        this.waitlist = new BookQueue();
     }
 
     // Getters
@@ -42,6 +44,10 @@ public class Book {
 
     public boolean getAvailability() {
         return isAvailable;
+    }
+
+    public BookQueue getWaitlist() {
+        return waitlist;
     }
 
     // Setters
