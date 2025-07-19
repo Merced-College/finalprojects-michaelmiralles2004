@@ -19,7 +19,6 @@ public class LibrarySystem {
     private MemberHashTable members;
     private Scanner scnr;
 
-    // Defaule constructor
     public LibrarySystem() {
         books = new ArrayList<>();
         members = new MemberHashTable();
@@ -192,7 +191,7 @@ public class LibrarySystem {
 
     // Prompts user to select a book and displays the waitlist (if any)
     private void viewWaitlist() {
-        System.out.println("Which book's waitlist would you like to vieww?");
+        System.out.println("Which book's waitlist would you like to view?");
         displayBooks();
 
         System.out.print("Enter book number: ");

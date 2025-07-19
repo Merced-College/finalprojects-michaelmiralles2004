@@ -29,7 +29,7 @@ public class BookQueue {
         size = 0;
     }
 
-    // Add a book to the rear of the queue
+    // Add a user to the rear of the queue
     public void enqueue(String user) {
         Node newNode = new Node(user);
 
@@ -45,7 +45,7 @@ public class BookQueue {
         size++;
     }
 
-    // Remove and return the book at the front of the queue
+    // Remove and return the user at the front of the queue
     public String dequeue() {
         if (isEmpty()) {
             System.out.println("Waitlist is empty.");
@@ -64,7 +64,7 @@ public class BookQueue {
         return user;
     }  
 
-    // Peek at the book at the front without removing
+    // Peek at the user at the front without removing
     public String peek() {
         if (isEmpty()) {
             return null;
@@ -73,7 +73,7 @@ public class BookQueue {
         return front.user;
     }
 
-    // Return the number of books in the queue
+    // Return the number of users in the queue
     public int getSize() {
         return size;
     }
@@ -82,7 +82,7 @@ public class BookQueue {
         return size == 0;
     }
 
-    // Print all books in queue
+    // Print all users in queue
     public void printQueue() {
         Node current = front;
         System.out.println("People in Waitlist (Front to Back): ");
