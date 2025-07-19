@@ -16,21 +16,22 @@ public class LibrarySystem {
     private BookStack returnedBooks = new BookStack();
 
     private ArrayList<Book> books;
-    private ArrayList<Member> members;
+    private MemberHashTable members;
     private Scanner scnr;
 
     // Defaule constructor
     public LibrarySystem() {
         books = new ArrayList<>();
-        members = new ArrayList<>();
+        members = new MemberHashTable();
         scnr = new Scanner(System.in);
 
         // load books from file
         loadBooks("books.txt");
 
         // Add sample members
-        members.add(new Member("John", "M001"));
-        members.add(new Member("Alice", "M002"));
+        members.put("M001", new Member("Mike", "M001"));
+        members.put("M002", new Member("John", "M002"));
+        members.put("M003", new Member("Alice", "M003"));
 
         // Sort books by title when start is called
         books = SortHelper.mergeSort(books);
@@ -51,7 +52,8 @@ public class LibrarySystem {
             System.out.println("3. Return a book");
             System.out.println("4. View recently returned books");
             System.out.println("5. View the waitlist");
-            System.out.println("6. Exit");
+            System.out.println("6. View all members");
+            System.out.println("7. Exit");
             System.out.print("Please enter your choice(1-6): ");
 
             int choice = scnr.nextInt();
@@ -73,6 +75,9 @@ public class LibrarySystem {
                 viewWaitlist();
             }
             else if (choice == 6) {
+                viewAllMembers();
+            }
+            else if (choice == 7) {
                 System.out.println("Hope you enjoyed your stay. Goodbye!");
                 return;
             }
@@ -185,6 +190,7 @@ public class LibrarySystem {
         }
     }
 
+    // Prompts user to select a book and displays the waitlist (if any)
     private void viewWaitlist() {
         System.out.println("Which book's waitlist would you like to vieww?");
         displayBooks();
@@ -208,5 +214,11 @@ public class LibrarySystem {
         else {
             queue.printQueue();
         }
+    }
+
+    // Displays all registered members in the system
+    private void viewAllMembers() {
+        System.out.println("Registered Library Members: ");
+        members.printTable();
     }
 }

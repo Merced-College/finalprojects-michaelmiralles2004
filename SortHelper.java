@@ -40,6 +40,7 @@ public class SortHelper {
         return merge(left, right);
     }
 
+    // Merges two sorted ArrayLists of Book objects into a single sorted list.
     private static ArrayList<Book> merge(ArrayList<Book> left, ArrayList<Book> right) {
         ArrayList<Book> result = new ArrayList<>();
         int i = 0;

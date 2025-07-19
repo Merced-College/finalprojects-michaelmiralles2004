@@ -42,6 +42,6 @@ public class Member {
     // Returns string showing the member details
     @Override
     public String toString() {
-        return memberName + " (ID: )" + memberID + " )";
+        return memberName + " (ID: " + memberID + " )";
     }
  }
